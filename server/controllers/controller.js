@@ -227,7 +227,6 @@ export const generateCsv = (req, res) => {
    }
 
    try {
-      console.log("Do we see this");
       const jar = spawn(
          "java",
          [
@@ -271,13 +270,26 @@ export const generateCsv = (req, res) => {
             "-cp",
             process.env.JAR_PATH,
             "io.github.TiaMarieG.centroidFinder.CentroidPlotter",
-            path.resolve(outputPath), // absolute path to the just-created CSV
+            path.resolve(outputPath),
          ],
          {
             detached: true,
-            stdio: "ignore",
+            stdio: ["ignore", "pipe", "pipe"],
          }
       );
+
+      if (jar.stdout) {
+         jar.stdout.on("data", (data) => {
+            process.stdout.write(data);
+         });
+      }
+
+      if (jar.stderr) {
+         jar.stderr.on("data", (data) => {
+            process.stderr.write(data);
+         });
+      }
+
       if (chartProcess && typeof chartProcess.unref === "function") chartProcess.unref();
 
       return res.status(202).json({ jobId });
