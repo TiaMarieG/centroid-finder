@@ -1,21 +1,21 @@
-E:\School Lessons\SDEV 334 - Algorithms\Major Assignments\centroid-finder\processor\src\main\java\io\github\TiaMarieG\centroidFinder\BinarizingImageGroupFinder.java
-E:\School Lessons\SDEV 334 - Algorithms\Major Assignments\centroid-finder\processor\src\main\java\io\github\TiaMarieG\centroidFinder\BinaryGroupFinder.java
-E:\School Lessons\SDEV 334 - Algorithms\Major Assignments\centroid-finder\processor\src\main\java\io\github\TiaMarieG\centroidFinder\CentroidCoordsPerFrame.java
-E:\School Lessons\SDEV 334 - Algorithms\Major Assignments\centroid-finder\processor\src\main\java\io\github\TiaMarieG\centroidFinder\CentroidFinderPerFrame.java
-E:\School Lessons\SDEV 334 - Algorithms\Major Assignments\centroid-finder\processor\src\main\java\io\github\TiaMarieG\centroidFinder\CentroidPlotter.java
-E:\School Lessons\SDEV 334 - Algorithms\Major Assignments\centroid-finder\processor\src\main\java\io\github\TiaMarieG\centroidFinder\ChartDemoVideoTest.java
-E:\School Lessons\SDEV 334 - Algorithms\Major Assignments\centroid-finder\processor\src\main\java\io\github\TiaMarieG\centroidFinder\ColorDistanceFinder.java
-E:\School Lessons\SDEV 334 - Algorithms\Major Assignments\centroid-finder\processor\src\main\java\io\github\TiaMarieG\centroidFinder\ColorParser.java
-E:\School Lessons\SDEV 334 - Algorithms\Major Assignments\centroid-finder\processor\src\main\java\io\github\TiaMarieG\centroidFinder\Coordinate.java
-E:\School Lessons\SDEV 334 - Algorithms\Major Assignments\centroid-finder\processor\src\main\java\io\github\TiaMarieG\centroidFinder\CsvLogger.java
-E:\School Lessons\SDEV 334 - Algorithms\Major Assignments\centroid-finder\processor\src\main\java\io\github\TiaMarieG\centroidFinder\DfsBinaryGroupFinder.java
-E:\School Lessons\SDEV 334 - Algorithms\Major Assignments\centroid-finder\processor\src\main\java\io\github\TiaMarieG\centroidFinder\DistanceImageBinarizer.java
-E:\School Lessons\SDEV 334 - Algorithms\Major Assignments\centroid-finder\processor\src\main\java\io\github\TiaMarieG\centroidFinder\EuclideanColorDistance.java
-E:\School Lessons\SDEV 334 - Algorithms\Major Assignments\centroid-finder\processor\src\main\java\io\github\TiaMarieG\centroidFinder\FPSFinder.java
-E:\School Lessons\SDEV 334 - Algorithms\Major Assignments\centroid-finder\processor\src\main\java\io\github\TiaMarieG\centroidFinder\Group.java
-E:\School Lessons\SDEV 334 - Algorithms\Major Assignments\centroid-finder\processor\src\main\java\io\github\TiaMarieG\centroidFinder\ImageBinarizer.java
-E:\School Lessons\SDEV 334 - Algorithms\Major Assignments\centroid-finder\processor\src\main\java\io\github\TiaMarieG\centroidFinder\ImageGroupFinder.java
-E:\School Lessons\SDEV 334 - Algorithms\Major Assignments\centroid-finder\processor\src\main\java\io\github\TiaMarieG\centroidFinder\ImageSummaryApp.java
-E:\School Lessons\SDEV 334 - Algorithms\Major Assignments\centroid-finder\processor\src\main\java\io\github\TiaMarieG\centroidFinder\PathHandler.java
-E:\School Lessons\SDEV 334 - Algorithms\Major Assignments\centroid-finder\processor\src\main\java\io\github\TiaMarieG\centroidFinder\VideoFrameRunner.java
-E:\School Lessons\SDEV 334 - Algorithms\Major Assignments\centroid-finder\processor\src\main\java\io\github\TiaMarieG\centroidFinder\VideoProcessor.java
+C:\Users\tmgor\Projects\centroid-finder\processor\src\main\java\io\github\TiaMarieG\centroidFinder\BinarizingImageGroupFinder.java
+C:\Users\tmgor\Projects\centroid-finder\processor\src\main\java\io\github\TiaMarieG\centroidFinder\BinaryGroupFinder.java
+C:\Users\tmgor\Projects\centroid-finder\processor\src\main\java\io\github\TiaMarieG\centroidFinder\CentroidCoordsPerFrame.java
+C:\Users\tmgor\Projects\centroid-finder\processor\src\main\java\io\github\TiaMarieG\centroidFinder\CentroidFinderPerFrame.java
+C:\Users\tmgor\Projects\centroid-finder\processor\src\main\java\io\github\TiaMarieG\centroidFinder\CentroidPlotter.java
+C:\Users\tmgor\Projects\centroid-finder\processor\src\main\java\io\github\TiaMarieG\centroidFinder\ChartDemoVideoTest.java
+C:\Users\tmgor\Projects\centroid-finder\processor\src\main\java\io\github\TiaMarieG\centroidFinder\ColorDistanceFinder.java
+C:\Users\tmgor\Projects\centroid-finder\processor\src\main\java\io\github\TiaMarieG\centroidFinder\ColorParser.java
+C:\Users\tmgor\Projects\centroid-finder\processor\src\main\java\io\github\TiaMarieG\centroidFinder\Coordinate.java
+C:\Users\tmgor\Projects\centroid-finder\processor\src\main\java\io\github\TiaMarieG\centroidFinder\CsvLogger.java
+C:\Users\tmgor\Projects\centroid-finder\processor\src\main\java\io\github\TiaMarieG\centroidFinder\DfsBinaryGroupFinder.java
+C:\Users\tmgor\Projects\centroid-finder\processor\src\main\java\io\github\TiaMarieG\centroidFinder\DistanceImageBinarizer.java
+C:\Users\tmgor\Projects\centroid-finder\processor\src\main\java\io\github\TiaMarieG\centroidFinder\EuclideanColorDistance.java
+C:\Users\tmgor\Projects\centroid-finder\processor\src\main\java\io\github\TiaMarieG\centroidFinder\FPSFinder.java
+C:\Users\tmgor\Projects\centroid-finder\processor\src\main\java\io\github\TiaMarieG\centroidFinder\Group.java
+C:\Users\tmgor\Projects\centroid-finder\processor\src\main\java\io\github\TiaMarieG\centroidFinder\ImageBinarizer.java
+C:\Users\tmgor\Projects\centroid-finder\processor\src\main\java\io\github\TiaMarieG\centroidFinder\ImageGroupFinder.java
+C:\Users\tmgor\Projects\centroid-finder\processor\src\main\java\io\github\TiaMarieG\centroidFinder\ImageSummaryApp.java
+C:\Users\tmgor\Projects\centroid-finder\processor\src\main\java\io\github\TiaMarieG\centroidFinder\PathHandler.java
+C:\Users\tmgor\Projects\centroid-finder\processor\src\main\java\io\github\TiaMarieG\centroidFinder\VideoFrameRunner.java
+C:\Users\tmgor\Projects\centroid-finder\processor\src\main\java\io\github\TiaMarieG\centroidFinder\VideoProcessor.java

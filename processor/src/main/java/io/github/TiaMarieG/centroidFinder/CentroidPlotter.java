@@ -4,6 +4,7 @@ import org.knowm.xchart.*;
 import org.knowm.xchart.style.markers.SeriesMarkers;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +12,7 @@ import java.util.List;
 public class CentroidPlotter {
 
    public static void main(String[] args) throws Exception {
-      String csvPath = "output/ensantina_centroids.csv";
+      String csvPath = args.length > 0 ? args[0] : "server/results/default.csv";
 
       List<Double> xData = new ArrayList<>();
       List<Double> yData = new ArrayList<>();
@@ -64,8 +65,12 @@ public class CentroidPlotter {
       XYSeries series = chart.addSeries("Centroid Path", xData, yData);
       series.setMarker(SeriesMarkers.CIRCLE);
 
+      String baseName = csvPath.substring(csvPath.lastIndexOf(File.separator) + 1).replace(".csv", "");
+      String chartOutputPath = "../server/results/" + baseName + "_chart";
+      BitmapEncoder.saveBitmap(chart, chartOutputPath, BitmapEncoder.BitmapFormat.PNG);
+      System.out.println("Saved chart to results/chart.png");
+
       System.out.println("Displaying chart...");
-      new SwingWrapper<>(chart).displayChart();
       System.out.println("Chart should now be visible.");
    }
 }

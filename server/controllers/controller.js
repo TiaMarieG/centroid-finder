@@ -81,11 +81,15 @@ export const getJobStatus = (req, res) => {
       }
 
       if (status === "done") {
+         const chartFile = output.replace(".csv", "_chart.png");
          return res
             .status(200)
-            .json({ status: "done", result: `/results/${output}` });
+            .json({
+               status: "done",
+               result: `/results/${output}`,
+               chart: `/downloads/${chartFile}`
+            });
       }
-
       if (status === "error") {
          return res.status(200).json({ status: "error", error });
       }
@@ -97,7 +101,7 @@ export const getJobStatus = (req, res) => {
    }
 };
 
-function monitorJob(jobId, outputPath, timeout = 30000) {
+function monitorJob(jobId, outputPath, timeout = 600000) {
    const start = Date.now();
 
    const interval = setInterval(() => {
@@ -260,6 +264,21 @@ export const generateCsv = (req, res) => {
       });
 
       monitorJob(jobId, outputPath);
+
+      const chartProcess = spawn(
+         "java",
+         [
+            "-cp",
+            process.env.JAR_PATH,
+            "io.github.TiaMarieG.centroidFinder.CentroidPlotter",
+            path.resolve(outputPath), // absolute path to the just-created CSV
+         ],
+         {
+            detached: true,
+            stdio: "ignore",
+         }
+      );
+      if (chartProcess && typeof chartProcess.unref === "function") chartProcess.unref();
 
       return res.status(202).json({ jobId });
    } catch (err) {
