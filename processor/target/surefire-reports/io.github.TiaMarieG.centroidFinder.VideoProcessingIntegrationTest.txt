@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: io.github.TiaMarieG.centroidFinder.VideoProcessingIntegrationTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 12.56 s -- in io.github.TiaMarieG.centroidFinder.VideoProcessingIntegrationTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 12.53 s -- in io.github.TiaMarieG.centroidFinder.VideoProcessingIntegrationTest

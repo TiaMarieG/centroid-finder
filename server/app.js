@@ -21,6 +21,9 @@ app.use("/", route);
 const outputDir = process.env.OUTPUT_DIR || path.resolve("output");
 app.use("/results", express.static(outputDir));
 
+// ✅ Serve static chart images from the same results folder
+app.use("/downloads", express.static(outputDir));
+
 // Serve static videos
 const videoDir = process.env.VIDEO_DIR || path.resolve("videos");
 app.use("/videos", express.static(videoDir));

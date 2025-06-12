@@ -32,14 +32,12 @@ export const processVid = (req, res) => {
    }
 
    try {
-      console.log("Spawn 1");
       const jar = spawn(
          "java",
          [
             "-jar",
             process.env.JAR_PATH,
-            // inputPath,
-            "etstst",
+            inputPath,
             outputPath,
             targetColor,
             threshold.toString(),
@@ -82,14 +80,13 @@ export const getJobStatus = (req, res) => {
 
       if (status === "done") {
          const chartFile = output.replace(".csv", "_chart.png");
-         return res
-            .status(200)
-            .json({
-               status: "done",
-               result: `/results/${output}`,
-               chart: `/downloads/${chartFile}`
-            });
+         return res.status(200).json({
+            status: "done",
+            result: `/results/${output}`,
+            chart: `/downloads/${chartFile}`,
+         });
       }
+
       if (status === "error") {
          return res.status(200).json({ status: "error", error });
       }
@@ -119,8 +116,33 @@ function monitorJob(jobId, outputPath, timeout = 600000) {
          const now = Date.now();
          const ageMs = now - stats.mtimeMs;
 
-         // File hasn't been modified in 1 second → assume fully written
          if (ageMs > 10000) {
+            const chartProcess = spawn(
+               "java",
+               [
+                  "-cp",
+                  process.env.JAR_PATH,
+                  "io.github.TiaMarieG.centroidFinder.CentroidPlotter",
+                  path.resolve(outputPath),
+               ],
+               {
+                  detached: true,
+                  stdio: ["ignore", "pipe", "pipe"],
+               }
+            );
+
+            chartProcess.stdout.on("data", (data) => {
+               process.stdout.write(data);
+            });
+
+            chartProcess.stderr.on("data", (data) => {
+               process.stderr.write(data);
+            });
+
+            if (chartProcess && typeof chartProcess.unref === "function") {
+               chartProcess.unref();
+            }
+
             jobStatus.set(jobId, {
                status: "done",
                output: path.basename(outputPath),
@@ -145,16 +167,12 @@ export const videos = (req, res) => {
    fs.readdir(videoDir, (err, files) => {
       if (err) {
          console.error("Cannot read from video directory: ", err);
-         return res
-            .status(500)
-            .json({ error: "Cannot read from video directory" });
+         return res.status(500).json({ error: "Cannot read from video directory" });
       }
 
       const videoFiles = files.filter(
          (file) =>
-            file.endsWith(".mp4") ||
-            file.endsWith(".mov") ||
-            file.endsWith(".mkv")
+            file.endsWith(".mp4") || file.endsWith(".mov") || file.endsWith(".mkv")
       );
       res.status(200).json(videoFiles);
    });
@@ -243,18 +261,8 @@ export const generateCsv = (req, res) => {
          }
       );
 
-      if (jar.stdout) {
-         jar.stdout.on("data", (data) => {
-            process.stdout.write(data);
-         });
-      }
-
-      if (jar.stderr) {
-         jar.stderr.on("data", (data) => {
-            process.stderr.write(data);
-         });
-      }
-
+      jar.stdout?.on("data", (data) => process.stdout.write(data));
+      jar.stderr?.on("data", (data) => process.stderr.write(data));
       if (jar && typeof jar.unref === "function") jar.unref();
 
       jobStatus.set(jobId, {
@@ -263,35 +271,6 @@ export const generateCsv = (req, res) => {
       });
 
       monitorJob(jobId, outputPath);
-
-      const chartProcess = spawn(
-         "java",
-         [
-            "-cp",
-            process.env.JAR_PATH,
-            "io.github.TiaMarieG.centroidFinder.CentroidPlotter",
-            path.resolve(outputPath),
-         ],
-         {
-            detached: true,
-            stdio: ["ignore", "pipe", "pipe"],
-         }
-      );
-
-      if (jar.stdout) {
-         jar.stdout.on("data", (data) => {
-            process.stdout.write(data);
-         });
-      }
-
-      if (jar.stderr) {
-         jar.stderr.on("data", (data) => {
-            process.stderr.write(data);
-         });
-      }
-
-      if (chartProcess && typeof chartProcess.unref === "function") chartProcess.unref();
-
       return res.status(202).json({ jobId });
    } catch (err) {
       console.error("Error starting CSV generation:", err);
