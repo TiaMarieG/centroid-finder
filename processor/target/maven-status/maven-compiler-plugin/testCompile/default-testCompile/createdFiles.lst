@@ -1,0 +1,11 @@
+io\github\TiaMarieG\centroidFinder\DistanceImageBinarizerTest.class
+io\github\TiaMarieG\centroidFinder\CentroidCoordsPerFrameTest$DummyCentroidFinder.class
+io\github\TiaMarieG\centroidFinder\VideoProcessingIntegrationTest.class
+io\github\TiaMarieG\centroidFinder\CentroidCoordsPerFrameTest.class
+io\github\TiaMarieG\centroidFinder\CentroidProcessingIntegrationTest.class
+io\github\TiaMarieG\centroidFinder\EuclideanColorDistanceTest.class
+io\github\TiaMarieG\centroidFinder\BinarizingImageGroupFinderTest$SimpleBinarizer.class
+io\github\TiaMarieG\centroidFinder\FPSFinderTest.class
+io\github\TiaMarieG\centroidFinder\BinarizingImageGroupFinderTest.class
+io\github\TiaMarieG\centroidFinder\CentroidFinderPerFrameTest.class
+io\github\TiaMarieG\centroidFinder\DfsBinaryGroupFinderTest.class

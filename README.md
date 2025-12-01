@@ -1,4 +1,4 @@
-# centroid-finder
+# centroid-finder Video Branch
 
 ## *DO THIS FIRST* Wave 0: AI Rules 
 AI is *NOT ALLOWED* for generating implementations of the classes.
