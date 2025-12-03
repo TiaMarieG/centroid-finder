@@ -1,0 +1,50 @@
+name: Backend CI
+
+on:
+   push:
+      branches: 
+         - "main"
+         - "dev-branch"
+         - "cont-int"
+   pull_request:
+      branches: 
+         - "main"
+         - "dev-branch"
+
+jobs:
+   build-java-check:
+      runs-on: ubuntu-latest
+      steps:
+         - name: Checkout Code
+           uses: actions/checkout@v4
+
+         - name: Set up JDK 21
+           uses: actions/setup-java@v4
+           with:
+              java-version: "21"
+              distribution: "temurin"
+              cache: "maven"
+
+         - name: Compile Java
+           run: mvn compile --file processor/pom.xml
+
+   test-node:
+      runs-on: ubuntu-latest
+      steps:
+         - name: Checkout Code
+           uses: actions/checkout@v4
+
+         - name: Set up Node.js
+           uses: actions/setup-node@v4
+           with:
+              node-version: "20"
+              cache: "npm"
+              cache-dependency-path: server/package-lock.json
+
+         - name: Install Dependencies
+           working-directory: ./server
+           run: npm ci
+
+         - name: Run Vitest
+           working-directory: ./server
+           run: npm test
