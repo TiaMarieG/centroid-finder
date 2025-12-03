@@ -9,10 +9,11 @@ vi.mock("../controllers/controller.js", () => ({
   getJobs: vi.fn((req, res) => res.status(200).json([])),
   videos: vi.fn((req, res) => res.status(200).json(["video1.mp4"])),
   thumbnail: vi.fn((req, res) => res.status(200).send("thumbnail")),
+  generateCsv: vi.fn((req, res) => res.status(200).json({ jobId: "mock-csv-job" })), 
   jobStatus: new Map(),
 }));
 
-import router from "../routers/router.js"; // Must come after the mock
+import router from "../routers/router.js"; 
 
 const app = express();
 app.use(express.json());
@@ -48,5 +49,11 @@ describe("router.js", () => {
     const res = await request(app).get("/thumbnail/test.jpg");
     expect(res.status).toBe(200);
     expect(res.text).toBe("thumbnail");
+  });
+
+  it("POST /api/generate-csv should call generateCsv", async () => {
+    const res = await request(app).post("/api/generate-csv");
+    expect(res.status).toBe(200);
+    expect(res.body).toEqual({ jobId: "mock-csv-job" });
   });
 });

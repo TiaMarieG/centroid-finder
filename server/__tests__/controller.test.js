@@ -3,15 +3,14 @@ import * as fs from "fs";
 import * as child_process from "child_process";
 import { processVid, jobStatus } from "../controllers/controller.js";
 
-// ✅ Set environment variables
 process.env.VIDEO_DIR = "/mock/videos";
 process.env.OUTPUT_DIR = "/mock/output";
 process.env.JAR_PATH = "/mock/analyzer.jar";
 
-// ✅ Mock system modules
 vi.mock("fs", () => ({
   existsSync: vi.fn(() => false),
   mkdirSync: vi.fn(),
+  statSync: vi.fn(),
 }));
 vi.mock("child_process", () => ({
   spawn: vi.fn(() => ({ unref: vi.fn() })),
@@ -34,9 +33,11 @@ describe("controller.js", () => {
 
   it("spawns java and creates directories", () => {
     const req = {
-      body: {
+      params: {
         file: "test.mp4",
-        color: "255,0,0",
+      },
+      query: {
+        targetColor: "255,0,0",
         threshold: 95,
       },
     };
